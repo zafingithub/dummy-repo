@@ -1,0 +1,45 @@
+/* Reset CSS */
+a, abbr, address, article, aside, audio, b, blockquote, body, canvas, caption, cite, code, dd, del, details, dfn, dialog, div, dl, dt, em, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, p, pre, q, samp, section, small, span, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, ul, var, video {
+	margin: 0;
+	padding: 0;
+}
+
+/* Worklight container div */
+#content {
+	height: 460px;
+	margin: 0 auto;
+	width: 320px;
+}
+
+html, body {
+   height:  100%;
+}
+.fieldset {
+	border: 1px solid #ddd;
+	border-width: thin;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	margin: 2px 5px;
+	padding: 2px 6px;
+}
+
+.input {
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-moz-box-shadow: inset 0px 2px 2px #666;
+	-webkit-box-shadow: inset 0px 2px 2px #666;
+	font-size: 12pt;
+	border-style: solid;
+	border-color: white;
+	border-width: thin;
+	height: 25px;
+	width: 260px;
+}
+
+.fieldrow {
+	width: 100%;
+	margin-top: 7px;
+	margin-bottom: 7px;
+}

@@ -1,0 +1,93 @@
+<!--
+/*******************************************************************************
+ * Licensed Materials - Property of IBM
+ * (c) Copyright IBM Corporation 2010, 2012. All Rights Reserved. 
+ * 
+ * Note to U.S. Government Users Restricted Rights:  Use, 
+ * duplication or disclosure restricted by GSA ADP Schedule 
+ * Contract with IBM Corp.
+ *******************************************************************************/
+-->
+<!--
+This  example is used to build the JKE sample application.
+-->
+<project name="JKEProject" default="dist" basedir=".">
+  <description>
+    JKE build file
+  </description>
+  <!-- set global properties for this build -->
+  <!--<property name="src" location="C:\BWS"/>-->
+  <property name="src" location="/var/lib/jenkins/jobs/JKEBuild/workspace/"/>
+    <property name="build" location="build"/>
+  <property name="dist" location="dist"/>
+  <property name="report.dir" location="junit_report"/>
+  
+
+  <target name="init" depends="clean">
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${build}"/>
+	
+	<!--GS -->
+	<mkdir dir="${report.dir}" />
+  </target>
+
+  <target name="compile" depends="init"
+        description="compile the source">
+    <!-- Compile the java code from ${src} into ${build} -->
+  	<property name="applibsdir" value ="${src}\JKEPrereqJars"/>
+  			<property name="classpath" value="${applibsdir}/derby.jar;${applibsdir}/swt-win32-win32-x86/swt.jar;${applibsdir}/junit.jar;${applibsdir}/com.ibm.team.json_1.0.0.I200908182153.jar;${applibsdir}/org.mortbay.jetty.server_6.1.23.v201004211559.jar;${applibsdir}/org.mortbay.jetty.util_6.1.23.v201004211559.jar;${applibsdir}/javax.servlet_2.5.0.v200910301333.jar;"/>
+    <javac srcdir="${src}" destdir="${build}" classpath="${classpath}" />
+	<copy file="${src}\JKEDBAccess\bin\com\jke\db\connection\JKEDB.properties" todir="${build}\com\jke\db\connection"/>
+  </target>
+
+  <target name="dist" depends="compile"
+        description="generate the distribution">
+    <!-- Create the distribution directory -->
+    <mkdir dir="${dist}/lib"/>
+	
+	
+
+    <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
+    <jar jarfile="${dist}/lib/JKE-${DSTAMP}.jar" basedir="${build}"/>
+  </target>
+
+  <target name="war" depends="junit">
+<war destfile="${build}/jke.war" 
+		     webxml="${src}\JKEBuildScripts\WEB-INF\web.xml" 
+			 manifest="${src}\JKEBuildScripts\META-INF\MANIFEST.MF"
+		     >
+		  <fileset dir="${src}\JKEWebUI\WebContent"/> 
+		  <lib dir="${src}\JKEPrereqJars" excludes="javax.servlet_2.5.0.v200910301333.jar"/>
+		  <!--<classes dir="${src}\JKEBuildScripts\sample.jke.build\build\com\jke" />-->
+		  <classes dir="${build}" />
+		</war>
+</target>
+
+  <target name="clean"
+        description="clean up">
+    <!-- Delete the ${build} and ${dist} directory trees -->
+    <delete dir="${build}"/>
+    <delete dir="${dist}"/>
+	<delete dir="${report.dir}" />
+  </target>
+  
+  <target name="junit" depends="compile">
+    <junit printsummary="yes" haltonfailure="no">
+	<!-- Project classpath, must include junit.jar -->
+	<!--<classpath refid="${src}\JKEPrereqJars\junit.jar" />-->
+	<classpath path="${src}\JKEPrereqJars\derby.jar" />
+<classpath path="${src}\JKEPrereqJars\com.ibm.team.json_1.0.0.I200908182153.jar"/>
+	<!-- test class -->
+	<classpath location="${build}" />
+		
+	<test name="com.jke.junit.AllTests" 
+		haltonfailure="no" todir="${report.dir}">
+		<formatter type="plain" />
+		<formatter type="xml" />
+	</test>
+  </junit>
+</target>
+  
+</project>

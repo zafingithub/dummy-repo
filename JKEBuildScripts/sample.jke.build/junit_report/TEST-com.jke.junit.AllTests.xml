@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="poc1-vm2.novalocal" name="com.jke.junit.AllTests" tests="46" time="41.854" timestamp="2016-03-07T12:49:31">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+    <property name="sun.boot.library.path" value="/opt/jdk1.7.0_79/jre/lib/amd64" />
+    <property name="java.vm.version" value="24.79-b02" />
+    <property name="ant.library.dir" value="/usr/share/ant//lib" />
+    <property name="ant.version" value="Apache Ant version 1.7.1 compiled on June 27 2008" />
+    <property name="ant.java.version" value="1.6" />
+    <property name="java.vm.vendor" value="Oracle Corporation" />
+    <property name="java.vendor.url" value="http://java.oracle.com/" />
+    <property name="path.separator" value=":" />
+    <property name="dist" value="/var/lib/jenkins/sharedspace/JKEMULTIPIPELINE/JKEBuildScripts/sample.jke.build/dist" />
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM" />
+    <property name="file.encoding.pkg" value="sun.io" />
+    <property name="user.country" value="US" />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="sun.os.patch.level" value="unknown" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="user.dir" value="/var/lib/jenkins/sharedspace/JKEMULTIPIPELINE/JKEBuildScripts/sample.jke.build" />
+    <property name="java.runtime.version" value="1.7.0_79-b15" />
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment" />
+    <property name="basedir" value="/var/lib/jenkins/sharedspace/JKEMULTIPIPELINE/JKEBuildScripts/sample.jke.build" />
+    <property name="java.endorsed.dirs" value="/opt/jdk1.7.0_79/jre/lib/endorsed" />
+    <property name="os.arch" value="amd64" />
+    <property name="java.io.tmpdir" value="/tmp" />
+    <property name="ant.core.lib" value="/usr/share/ant/lib/ant.jar" />
+    <property name="line.separator" value="
+" />
+    <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+    <property name="os.name" value="Linux" />
+    <property name="DSTAMP" value="20160307" />
+    <property name="ant.home" value="/usr/share/ant/" />
+    <property name="ant.project.name" value="JKEProject" />
+    <property name="sun.jnu.encoding" value="UTF-8" />
+    <property name="applibsdir" value="/var/lib/jenkins/jobs/JKEBuild/workspace\JKEPrereqJars" />
+    <property name="TODAY" value="March 7 2016" />
+    <property name="java.library.path" value="/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib" />
+    <property name="src" value="/var/lib/jenkins/jobs/JKEBuild/workspace" />
+    <property name="java.class.version" value="51.0" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
+    <property name="classpath" value="/var/lib/jenkins/jobs/JKEBuild/workspace\JKEPrereqJars/derby.jar;/var/lib/jenkins/jobs/JKEBuild/workspace\JKEPrereqJars/swt-win32-win32-x86/swt.jar;/var/lib/jenkins/jobs/JKEBuild/workspace\JKEPrereqJars/junit.jar;/var/lib/jenkins/jobs/JKEBuild/workspace\JKEPrereqJars/com.ibm.team.json_1.0.0.I200908182153.jar;/var/lib/jenkins/jobs/JKEBuild/workspace\JKEPrereqJars/org.mortbay.jetty.server_6.1.23.v201004211559.jar;/var/lib/jenkins/jobs/JKEBuild/workspace\JKEPrereqJars/org.mortbay.jetty.util_6.1.23.v201004211559.jar;/var/lib/jenkins/jobs/JKEBuild/workspace\JKEPrereqJars/javax.servlet_2.5.0.v200910301333.jar;" />
+    <property name="os.version" value="2.6.32-504.el6.x86_64" />
+    <property name="ant.file" value="/var/lib/jenkins/sharedspace/JKEMULTIPIPELINE/JKEBuildScripts/sample.jke.build/build.xml" />
+    <property name="user.home" value="/var/lib/jenkins" />
+    <property name="user.timezone" value="" />
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob" />
+    <property name="java.specification.version" value="1.7" />
+    <property name="file.encoding" value="UTF-8" />
+    <property name="TSTAMP" value="0749" />
+    <property name="ant.file.JKEProject" value="/var/lib/jenkins/sharedspace/JKEMULTIPIPELINE/JKEBuildScripts/sample.jke.build/build.xml" />
+    <property name="user.name" value="jenkins" />
+    <property name="java.class.path" value="/usr/share/ant//lib/ant-launcher.jar:/usr/share/ant/lib/ant-trax.jar:/usr/share/ant/lib/ant-netrexx.jar:/usr/share/ant/lib/ant-javamail.jar:/usr/share/ant/lib/ant-launcher.jar:/usr/share/ant/lib/ant-antlr.jar:/usr/share/ant/lib/ant-weblogic.jar:/usr/share/ant/lib/ant-apache-resolver.jar:/usr/share/ant/lib/ant-apache-log4j.jar:/usr/share/ant/lib/ant-jsch.jar:/usr/share/ant/lib/ant-swing.jar:/usr/share/ant/lib/ant-commons-logging.jar:/usr/share/ant/lib/ant-apache-bsf.jar:/usr/share/ant/lib/ant.jar:/usr/share/ant/lib/ant-apache-oro.jar:/usr/share/ant/lib/junit.jar:/usr/share/ant/lib/ant-jdepend.jar:/usr/share/ant/lib/ant-apache-bcel.jar:/usr/share/ant/lib/ant-commons-net.jar:/usr/share/ant/lib/xercesImpl.jar:/usr/share/ant/lib/ant-nodeps.jar:/usr/share/ant/lib/ant-testutil.jar:/usr/share/ant/lib/ant-starteam.jar:/usr/share/ant/lib/ant-apache-regexp.jar:/usr/share/ant/lib/ant-jai.jar:/usr/share/ant/lib/ant-stylebook.jar:/usr/share/ant/lib/xml-apis.jar:/usr/share/ant/lib/ant-junit.jar:/usr/share/ant/lib/ant-jmf.jar:/opt/jdk1.7.0_79/lib/tools.jar" />
+    <property name="report.dir" value="/var/lib/jenkins/sharedspace/JKEMULTIPIPELINE/JKEBuildScripts/sample.jke.build/junit_report" />
+    <property name="java.vm.specification.version" value="1.7" />
+    <property name="sun.java.command" value="org.apache.tools.ant.launch.Launcher -cp  war" />
+    <property name="sun.arch.data.model" value="64" />
+    <property name="java.home" value="/opt/jdk1.7.0_79/jre" />
+    <property name="java.specification.vendor" value="Oracle Corporation" />
+    <property name="user.language" value="en" />
+    <property name="build" value="/var/lib/jenkins/sharedspace/JKEMULTIPIPELINE/JKEBuildScripts/sample.jke.build/build" />
+    <property name="awt.toolkit" value="sun.awt.X11.XToolkit" />
+    <property name="java.vm.info" value="mixed mode" />
+    <property name="java.version" value="1.7.0_79" />
+    <property name="java.ext.dirs" value="/opt/jdk1.7.0_79/jre/lib/ext:/usr/java/packages/lib/ext" />
+    <property name="sun.boot.class.path" value="/opt/jdk1.7.0_79/jre/lib/resources.jar:/opt/jdk1.7.0_79/jre/lib/rt.jar:/opt/jdk1.7.0_79/jre/lib/sunrsasign.jar:/opt/jdk1.7.0_79/jre/lib/jsse.jar:/opt/jdk1.7.0_79/jre/lib/jce.jar:/opt/jdk1.7.0_79/jre/lib/charsets.jar:/opt/jdk1.7.0_79/jre/lib/jfr.jar:/opt/jdk1.7.0_79/jre/classes" />
+    <property name="java.vendor" value="Oracle Corporation" />
+    <property name="file.separator" value="/" />
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+    <property name="sun.cpu.isalist" value="" />
+  </properties>
+  <testcase classname="com.jke.junit.OrganizationFinderJUnit" name="testAddSubclassInstancesBad" time="0.004" />
+  <testcase classname="com.jke.junit.AccountLogicJUnit" name="testAccountLogic" time="6.355" />
+  <testcase classname="com.jke.junit.AccountLogicJUnit" name="testAccountTypesArray" time="2.694" />
+  <testcase classname="com.jke.junit.AccountLogicJUnit" name="testGetAccountNumber" time="2.524" />
+  <testcase classname="com.jke.junit.AccountLogicJUnit" name="testGetUserAccountTypes" time="2.775" />
+  <testcase classname="com.jke.junit.AccountLogicJUnit" name="testDetermineAcct" time="2.511" />
+  <testcase classname="com.jke.junit.AccountLogicJUnit" name="testGetAccount" time="2.281" />
+  <testcase classname="com.jke.junit.AccountLogicJUnit" name="testGetUserAccounts" time="2.449" />
+  <testcase classname="com.jke.junit.BeanModelJUnit" name="testTransactionAmount" time="0.0" />
+  <testcase classname="com.jke.junit.BeanModelJUnit" name="testTransactionDate" time="0.001" />
+  <testcase classname="com.jke.junit.BeanModelJUnit" name="testContributionAccountNumber" time="0.001" />
+  <testcase classname="com.jke.junit.BeanModelJUnit" name="testContributionOrganization" time="0.0" />
+  <testcase classname="com.jke.junit.BeanModelJUnit" name="testContributionPercentage" time="0.0" />
+  <testcase classname="com.jke.junit.BeanModelJUnit" name="testContributionDate" time="0.0" />
+  <testcase classname="com.jke.junit.BeanModelJUnit" name="testAccountBalance" time="0.0" />
+  <testcase classname="com.jke.junit.BeanModelJUnit" name="testAccountDividends" time="0.0" />
+  <testcase classname="com.jke.junit.BeanModelJUnit" name="testAccountDividendsETD" time="0.001" />
+  <testcase classname="com.jke.junit.BeanModelJUnit" name="testAccountContributions" time="0.0" />
+  <testcase classname="com.jke.junit.BeanModelJUnit" name="testAccountContributionsETD" time="0.0" />
+  <testcase classname="com.jke.junit.BeanModelJUnit" name="testAccountAccountNumber" time="0.0" />
+  <testcase classname="com.jke.junit.BeanModelJUnit" name="testAccountUsername" time="0.001" />
+  <testcase classname="com.jke.junit.BeanModelJUnit" name="testAccountType" time="0.0" />
+  <testcase classname="com.jke.junit.BeanModelJUnit" name="testAccountBeanSerializer" time="0.005" />
+  <testcase classname="com.jke.junit.BeanModelJUnit" name="testTransactionBeanSerializer" time="0.0" />
+  <testcase classname="com.jke.junit.BeanModelJUnit" name="testUserBeanSerializer" time="0.004" />
+  <testcase classname="com.jke.junit.BeanModelJUnit" name="testUserBeanUserName" time="0.0" />
+  <testcase classname="com.jke.junit.BeanModelJUnit" name="testUserBeanFirstName" time="0.0" />
+  <testcase classname="com.jke.junit.BeanModelJUnit" name="testUserBeanLastName" time="0.001" />
+  <testcase classname="com.jke.junit.BeanModelJUnit" name="testTransactionBeanID" time="0.0" />
+  <testcase classname="com.jke.junit.BeanModelJUnit" name="testTransactionBeanType" time="0.0" />
+  <testcase classname="com.jke.junit.BeanModelJUnit" name="testTransactionBeanAccountNumber" time="0.001" />
+  <testcase classname="com.jke.junit.BeanModelJUnit" name="testTransactionSource" time="0.0" />
+  <testcase classname="com.jke.junit.DBJunit" name="testCreateLoadUsers" time="2.34" />
+  <testcase classname="com.jke.junit.DBJunit" name="testCreateLoadTransactionBeans" time="3.029" />
+  <testcase classname="com.jke.junit.DBJunit" name="testLogin" time="2.181" />
+  <testcase classname="com.jke.junit.DBJunit" name="testCreateLoadAccountBean" time="4.296" />
+  <testcase classname="com.jke.junit.OrganizationLogicJUnit" name="testAsMap" time="0.004" />
+  <testcase classname="com.jke.junit.OrganizationLogicJUnit" name="testIsValidOrganization" time="0.001" />
+  <testcase classname="com.jke.junit.OrganizationLogicJUnit" name="testNamesAsArray" time="0.001" />
+  <testcase classname="com.jke.junit.TransactionLogicJUnit" name="testGetTransactionHistory" time="3.236" />
+  <testcase classname="com.jke.junit.TransactionLogicJUnit" name="testGetProposedContributionTransaction" time="2.395" />
+  <testcase classname="com.jke.junit.TransactionLogicJUnit" name="testPerformContribution" time="2.692" />
+  <testcase classname="com.jke.junit.TestSalvationArmy" name="testOrganization" time="0.0" />
+  <testcase classname="com.jke.junit.TestRedCross" name="testOrganization" time="0.001" />
+  <testcase classname="com.jke.junit.TestCare" name="testOrganization" time="0.0" />
+  <testcase classname="com.jke.junit.TestAmericanCancerSociety" name="testOrganization" time="0.0" />
+  <system-out><![CDATA[Table created. JKEKeys
+Table created. JKEuser
+User created: Julie Brown
+User created: Rita Betts
+Table created. JKEaccounts
+Account Created: 200
+Account Created: 201
+Account Created: 202
+Account Created: 203
+Account Created: 204
+Account Created: 300
+Account Created: 301
+Account Created: 302
+Account Created: 303
+Account Created: 304
+Table created. JKEtransactions
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Table created. JKEcontributions
+Table created. JKEKeys
+Table created. JKEuser
+User created: Julie Brown
+User created: Rita Betts
+Table created. JKEaccounts
+Account Created: 200
+Account Created: 201
+Account Created: 202
+Account Created: 203
+Account Created: 204
+Account Created: 300
+Account Created: 301
+Account Created: 302
+Account Created: 303
+Account Created: 304
+Table created. JKEtransactions
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Table created. JKEcontributions
+Table created. JKEKeys
+Table created. JKEuser
+User created: Julie Brown
+User created: Rita Betts
+Table created. JKEaccounts
+Account Created: 200
+Account Created: 201
+Account Created: 202
+Account Created: 203
+Account Created: 204
+Account Created: 300
+Account Created: 301
+Account Created: 302
+Account Created: 303
+Account Created: 304
+Table created. JKEtransactions
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Table created. JKEcontributions
+Table created. JKEKeys
+Table created. JKEuser
+User created: Julie Brown
+User created: Rita Betts
+Table created. JKEaccounts
+Account Created: 200
+Account Created: 201
+Account Created: 202
+Account Created: 203
+Account Created: 204
+Account Created: 300
+Account Created: 301
+Account Created: 302
+Account Created: 303
+Account Created: 304
+Table created. JKEtransactions
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Table created. JKEcontributions
+Table created. JKEKeys
+Table created. JKEuser
+User created: Julie Brown
+User created: Rita Betts
+Table created. JKEaccounts
+Account Created: 200
+Account Created: 201
+Account Created: 202
+Account Created: 203
+Account Created: 204
+Account Created: 300
+Account Created: 301
+Account Created: 302
+Account Created: 303
+Account Created: 304
+Table created. JKEtransactions
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Table created. JKEcontributions
+Table created. JKEKeys
+Table created. JKEuser
+User created: Julie Brown
+User created: Rita Betts
+Table created. JKEaccounts
+Account Created: 200
+Account Created: 201
+Account Created: 202
+Account Created: 203
+Account Created: 204
+Account Created: 300
+Account Created: 301
+Account Created: 302
+Account Created: 303
+Account Created: 304
+Table created. JKEtransactions
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Table created. JKEcontributions
+Table created. JKEKeys
+Table created. JKEuser
+User created: Julie Brown
+User created: Rita Betts
+Table created. JKEaccounts
+Account Created: 200
+Account Created: 201
+Account Created: 202
+Account Created: 203
+Account Created: 204
+Account Created: 300
+Account Created: 301
+Account Created: 302
+Account Created: 303
+Account Created: 304
+Table created. JKEtransactions
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Table created. JKEcontributions
+Table created. JKEKeys
+Table created. JKEuser
+User created: Julie Brown
+User created: Rita Betts
+Table created. JKEaccounts
+Account Created: 200
+Account Created: 201
+Account Created: 202
+Account Created: 203
+Account Created: 204
+Account Created: 300
+Account Created: 301
+Account Created: 302
+Account Created: 303
+Account Created: 304
+Table created. JKEtransactions
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Table created. JKEcontributions
+User created: Markus Foo
+Table created. JKEKeys
+Table created. JKEuser
+User created: Julie Brown
+User created: Rita Betts
+Table created. JKEaccounts
+Account Created: 200
+Account Created: 201
+Account Created: 202
+Account Created: 203
+Account Created: 204
+Account Created: 300
+Account Created: 301
+Account Created: 302
+Account Created: 303
+Account Created: 304
+Table created. JKEtransactions
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Table created. JKEcontributions
+Transaction created: 7
+Table created. JKEKeys
+Table created. JKEuser
+User created: Julie Brown
+User created: Rita Betts
+Table created. JKEaccounts
+Account Created: 200
+Account Created: 201
+Account Created: 202
+Account Created: 203
+Account Created: 204
+Account Created: 300
+Account Created: 301
+Account Created: 302
+Account Created: 303
+Account Created: 304
+Table created. JKEtransactions
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Table created. JKEcontributions
+Table created. JKEKeys
+Table created. JKEuser
+User created: Julie Brown
+User created: Rita Betts
+Table created. JKEaccounts
+Account Created: 200
+Account Created: 201
+Account Created: 202
+Account Created: 203
+Account Created: 204
+Account Created: 300
+Account Created: 301
+Account Created: 302
+Account Created: 303
+Account Created: 304
+Table created. JKEtransactions
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Table created. JKEcontributions
+Account Created: 6
+Table created. JKEKeys
+Table created. JKEuser
+User created: Julie Brown
+User created: Rita Betts
+Table created. JKEaccounts
+Account Created: 200
+Account Created: 201
+Account Created: 202
+Account Created: 203
+Account Created: 204
+Account Created: 300
+Account Created: 301
+Account Created: 302
+Account Created: 303
+Account Created: 304
+Table created. JKEtransactions
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Table created. JKEcontributions
+Table created. JKEKeys
+Table created. JKEuser
+User created: Julie Brown
+User created: Rita Betts
+Table created. JKEaccounts
+Account Created: 200
+Account Created: 201
+Account Created: 202
+Account Created: 203
+Account Created: 204
+Account Created: 300
+Account Created: 301
+Account Created: 302
+Account Created: 303
+Account Created: 304
+Table created. JKEtransactions
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Table created. JKEcontributions
+Table created. JKEKeys
+Table created. JKEuser
+User created: Julie Brown
+User created: Rita Betts
+Table created. JKEaccounts
+Account Created: 200
+Account Created: 201
+Account Created: 202
+Account Created: 203
+Account Created: 204
+Account Created: 300
+Account Created: 301
+Account Created: 302
+Account Created: 303
+Account Created: 304
+Table created. JKEtransactions
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Table created. JKEcontributions
+Transaction created: 200
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

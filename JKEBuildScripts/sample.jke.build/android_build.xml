@@ -1,0 +1,247 @@
+<!--
+/*******************************************************************************
+ * Licensed Materials - Property of IBM
+ * (c) Copyright IBM Corporation 2012. All Rights Reserved. 
+ * 
+ * Note to U.S. Government Users Restricted Rights:  Use, 
+ * duplication or disclosure restricted by GSA ADP Schedule 
+ * Contract with IBM Corp.
+ *******************************************************************************/
+-->
+<!--
+This example is used to build the JKE sample application android native code
+-->
+
+<project name="Build the JKE sample Android application" default="all">
+    
+ 	<property name="loadDir" value="${basedir}/../.." />
+	
+	<target name="all" depends="hybrid,androidNative,appcenterPush" /> 
+
+	<!-- Hybrid build -->
+	<target name="hybrid">
+		<!-- call the hybrid build so that artifacts from the hybrid are copied
+		     into the native project.
+		  -->
+ 		<startBuildActivity 
+ 			label="Building and deploying Worklight application web code and adapters"
+ 			autoComplete="true"
+ 			buildResultUUID="${buildResultUUID}"
+ 			repositoryAddress="${repositoryAddress}"
+ 			userId="${buildUserID}"
+ 			password="${buildUserPass}" />
+
+		<property name="project.path" value="${loadDir}/${wlProject}"/>
+		<property name="output.path" value="${loadDir}/output"/>
+ 		
+		<taskdef resource="com/worklight/ant/defaults.properties"></taskdef>
+
+		<mkdir dir="${output.path}" />	
+		<record name="${output.path}/build.log" loglevel="verbose" append="false"/>
+
+		<echo>Update application descriptor to point to test Worklight server</echo>
+		<replaceregexp file="${project.path}/apps/${wlApp}/application-descriptor.xml"
+		               match="&lt;worklightServerRootURL>.*&lt;/worklightServerRootURL>"
+		               replace="&lt;worklightServerRootURL>http://${wlTestHost}/${wlContext}&lt;/worklightServerRootURL>"
+		/>
+		
+		<echo>Build Worklight App ${wlApp}</echo>
+		<app-builder nativeProjectPrefix="${wlProject}" applicationFolder="${project.path}/apps/${wlApp}" outputFolder="${output.path}/${wlProject}" skinBuildExtensions="build-dojo.xml"> </app-builder>
+		
+		<echo>Deploy Worklight App ${wlApp}</echo>
+		<app-deployer deployable="${output.path}/${wlProject}/${wlApp}-all.wlapp" worklightServerHost="http://${wlHost}/${wlContext}"/>
+
+		<echo>Build Worklight Adapter ${wlAdapter1}</echo>
+		<adapter-builder folder="${project.path}/adapters/${wlAdapter1}" destinationFolder="${output.path}/${wlProject}"></adapter-builder>
+
+		<echo>Build Worklight Adapter ${wlAdapter2}</echo>
+		<adapter-builder folder="${project.path}/adapters/${wlAdapter2}" destinationFolder="${output.path}/${wlProject}"></adapter-builder>
+		
+		<echo>Deploy Worklight Adapter ${wlAdapter1}</echo>
+		<adapter-deployer deployable="${output.path}/${wlProject}/${wlAdapter1}.adapter" worklightServerHost="http://${wlHost}/${wlContext}"/>
+
+		<echo>Deploy Worklight Adapter ${wlAdapter2}</echo>
+		<adapter-deployer deployable="${output.path}/${wlProject}/${wlAdapter2}.adapter" worklightServerHost="http://${wlHost}/${wlContext}"/>
+
+		<!--  Publish the Worklight files -->
+		<startBuildActivity 
+ 			activityIdProperty="PublishWLArtifacts"
+ 			label="Publish the Worklight application and adapters to the build result"
+ 			autoComplete="true"
+ 			buildResultUUID="${buildResultUUID}"
+ 			repositoryAddress="${repositoryAddress}"
+ 			userId="${buildUserID}"
+ 			password="${buildUserPass}" />
+		
+		<artifactPublisher
+			userId="${buildUserID}"
+			password="${buildUserPass}"
+			repositoryAddress="${repositoryAddress}"
+			buildResultUUID="${buildResultUUID}"
+			verbose="true"
+			filePath="${output.path}/${wlProject}/${wlApp}-all.wlapp"
+			label="JKE Banking Business Recovery that Matters (Mobile/${mobilePlatform}) ${wlApp} Worklight application" />		
+
+		<artifactPublisher
+			userId="${buildUserID}"
+			password="${buildUserPass}"
+			repositoryAddress="${repositoryAddress}"
+			buildResultUUID="${buildResultUUID}"
+			verbose="true"
+			filePath="${output.path}/${wlProject}/${wlAdapter1}.adapter"
+			label="JKE Banking Business Recovery that Matters (Mobile/${mobilePlatform}) ${wlAdapter1} Worklight adapater" />		
+
+		<artifactPublisher
+			userId="${buildUserID}"
+			password="${buildUserPass}"
+			repositoryAddress="${repositoryAddress}"
+			buildResultUUID="${buildResultUUID}"
+			verbose="true"
+			filePath="${output.path}/${wlProject}/${wlAdapter2}.adapter"
+			label="JKE Banking Business Recovery that Matters (Mobile/${mobilePlatform}) ${wlAdapter2} Worklight adapter" />		
+	</target>
+
+	<!-- Worklight Build for Android  -->	
+	<target name="androidNative">
+		<property name="loadDir" value="${basedir}/../.." />
+		<property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter" />
+		<property name="build.debuglevel" value="lines,vars,source"/> 
+		<property name="output.path" value="${loadDir}/output" />
+		<property name="androidCMDlog" value="${output.path}/androidCMD.log" />
+		<property name="wlappdir" value = "${loadDir}/${wlProject}/apps/${wlApp}"/>
+		<property name="androidCMD" value="${androidSDKPath}/tools/android.bat"/>
+		
+ 		<startBuildActivity 
+ 			label="Publishing Worklight server and Application Center URLs"
+ 			autoComplete="true"
+ 			buildResultUUID="${buildResultUUID}"
+ 			repositoryAddress="${repositoryAddress}"
+ 			userId="${buildUserID}"
+ 			password="${buildUserPass}" />
+
+		<linkPublisher repositoryAddress="${repositoryAddress}"
+		               userId="${buildUserID}"
+		               password="${buildUserPass}"
+		               buildResultUUID="${buildResultUUID}"
+		               url="http://${wlHost}/${wlContext}/console"
+		               label="Worklight Server Console" />
+		<linkPublisher repositoryAddress="${repositoryAddress}"
+		               userId="${buildUserID}"
+		               password="${buildUserPass}"
+		               buildResultUUID="${buildResultUUID}"
+		               url="http://${appCenterHost}/${appCenterContext}"
+		               label="Application Center Console" />
+
+		<!--  Build the native Android project -->
+		<startBuildActivity
+			label="Generate the Android build.xml file"
+			autoComplete="true"	
+			buildResultUUID="${buildResultUUID}"
+			repositoryAddress="${repositoryAddress}"
+			userId="${buildUserID}"
+			password="${buildUserPass}" />
+		
+		<!-- Generate the native build.xml -->
+		<exec dir="${wlappdir}/android/native" executable="${androidCMD} " 
+		    failonerror="true"
+		    resultproperty="androidCMDResult"
+		    output="${androidCMDlog}">
+		    <arg line=" update project -p ." />
+		</exec>
+		
+		<!-- Build the app -->
+		<startBuildActivity
+			label="Build the Android project"
+			autoComplete="true"	
+			buildResultUUID="${buildResultUUID}"
+			repositoryAddress="${repositoryAddress}"
+			userId="${buildUserID}"
+			password="${buildUserPass}" />
+
+		<subant target="debug" buildpath="${wlappdir}/android/native" ></subant>
+
+		<!--  Publish the APK -->
+		<startBuildActivity 
+ 			activityIdProperty="PublishArtifact"
+ 			label="Publish the Android .apk file to the build result"
+ 			autoComplete="true"
+ 			buildResultUUID="${buildResultUUID}"
+ 			repositoryAddress="${repositoryAddress}"
+ 			userId="${buildUserID}"
+ 			password="${buildUserPass}" />
+		
+		<property name="wlAPK" value="${wlappdir}/android/native/bin/${wlApp}-debug.apk"/>
+		
+		<artifactPublisher
+			userId="${buildUserID}"
+			password="${buildUserPass}"
+			repositoryAddress="${repositoryAddress}"
+			buildResultUUID="${buildResultUUID}"
+			verbose="true"
+			filePath="${wlAPK}"
+			label="JKE Banking Business Recovery that Matters (Mobile/${mobilePlatform}) APK" />
+	</target>
+
+	<!-- Appcenter apk push  -->	
+	<target name="appcenterPush">
+		<startBuildActivity
+			activityIdProperty="IBMAppcenterPush"
+			label="Publish the Android .apk to the Worklight Application Center"
+			autoComplete="true"	
+			buildResultUUID="${buildResultUUID}"
+			repositoryAddress="${repositoryAddress}"
+			userId="${buildUserID}"
+			password="${buildUserPass}" />
+
+		<taskdef name="uploadapps" classname="com.ibm.appcenter.ant.UploadApps"></taskdef>
+		<uploadapps serverPath="http://${appCenterHost}/" context="${appCenterContext}" loginUser="${appCenterAdminID}" loginPass="${appCenterAdminPass}" forceOverwrite="true" file="${wlAPK}" />
+	</target>
+
+	<!-- These task definitions make the Jazz ant tasks available to this build file.
+	     In order to find these classnames at run time, ant must be invoked with:
+
+		     -lib <buildsystem-location>/buildtoolkit
+	 -->
+	<taskdef name="artifactPublisher"
+	         classname="com.ibm.team.build.ant.task.ArtifactFilePublisherTask" />
+
+	<taskdef name="artifactLinkPublisher"
+	         classname="com.ibm.team.build.ant.task.ArtifactLinkPublisherTask" />
+
+	<taskdef name="buildResultPublisher"
+	         classname="com.ibm.team.build.ant.task.BuildResultPublisherTask" />
+
+	<taskdef name="filePublisher"
+	         classname="com.ibm.team.build.ant.task.FilePublisherTask" />
+
+	<taskdef name="jdtCompileLogPublisher"
+	         classname="com.ibm.team.build.ant.task.JdtCompileLogPublisherTask" />
+
+	<taskdef name="junitLogPublisher"
+	         classname="com.ibm.team.build.ant.task.JUnitLogPublisherTask" />
+
+	<taskdef name="junitResultPublisher"
+		        classname="com.ibm.team.build.ant.task.JUnitLogPublisherTask"/>	
+	
+	<taskdef name="linkPublisher"
+	         classname="com.ibm.team.build.ant.task.LinkPublisherTask" />
+
+	<taskdef name="logPublisher"
+	         classname="com.ibm.team.build.ant.task.LogPublisherTask" />
+
+	<taskdef name="teamAccept"
+	         classname="com.ibm.team.build.ant.task.TeamAcceptTask"/>
+
+	<taskdef name="teamFetch"
+	         classname="com.ibm.team.build.ant.task.TeamFetchTask"/>
+
+	<taskdef name="workItemPublisher"
+	         classname="com.ibm.team.build.ant.task.WorkItemPublisherTask"/>
+
+   	<taskdef name="startBuildActivity"
+  	         classname="com.ibm.team.build.ant.task.StartBuildActivityTask" />
+
+   	<taskdef name="completeBuildActivity"
+   	         classname="com.ibm.team.build.ant.task.CompleteBuildActivityTask" />
+
+</project>	

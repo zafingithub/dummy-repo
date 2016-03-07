@@ -1,0 +1,8 @@
+dojo-bootstrap-js=dojo/dojo.xd.js
+dojo-css=dojo/resources/dojo.css
+dojo-dijit-css=dijit/themes/dijit.css
+dojo-root=http\://o.aolcdn.com/dojo/1.4.1/
+dojo-source-metadata-root=/D\:/Program Files/IBM/SDPShared/plugins/com.ibm.etools.webtools.dojo.distributions_1.0.0.v20100518_1610/resources/1.4.1.0/expanded/
+dojo-theme-css=dijit/themes/tundra/tundra.css
+dojo-type-attribute-name=dojotype
+eclipse.preferences.version=1

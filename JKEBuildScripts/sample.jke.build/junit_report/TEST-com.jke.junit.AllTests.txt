@@ -1,0 +1,363 @@
+Testsuite: com.jke.junit.AllTests
+Tests run: 46, Failures: 0, Errors: 0, Time elapsed: 41.854 sec
+------------- Standard Output ---------------
+Table created. JKEKeys
+Table created. JKEuser
+User created: Julie Brown
+User created: Rita Betts
+Table created. JKEaccounts
+Account Created: 200
+Account Created: 201
+Account Created: 202
+Account Created: 203
+Account Created: 204
+Account Created: 300
+Account Created: 301
+Account Created: 302
+Account Created: 303
+Account Created: 304
+Table created. JKEtransactions
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Table created. JKEcontributions
+Table created. JKEKeys
+Table created. JKEuser
+User created: Julie Brown
+User created: Rita Betts
+Table created. JKEaccounts
+Account Created: 200
+Account Created: 201
+Account Created: 202
+Account Created: 203
+Account Created: 204
+Account Created: 300
+Account Created: 301
+Account Created: 302
+Account Created: 303
+Account Created: 304
+Table created. JKEtransactions
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Table created. JKEcontributions
+Table created. JKEKeys
+Table created. JKEuser
+User created: Julie Brown
+User created: Rita Betts
+Table created. JKEaccounts
+Account Created: 200
+Account Created: 201
+Account Created: 202
+Account Created: 203
+Account Created: 204
+Account Created: 300
+Account Created: 301
+Account Created: 302
+Account Created: 303
+Account Created: 304
+Table created. JKEtransactions
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Table created. JKEcontributions
+Table created. JKEKeys
+Table created. JKEuser
+User created: Julie Brown
+User created: Rita Betts
+Table created. JKEaccounts
+Account Created: 200
+Account Created: 201
+Account Created: 202
+Account Created: 203
+Account Created: 204
+Account Created: 300
+Account Created: 301
+Account Created: 302
+Account Created: 303
+Account Created: 304
+Table created. JKEtransactions
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Table created. JKEcontributions
+Table created. JKEKeys
+Table created. JKEuser
+User created: Julie Brown
+User created: Rita Betts
+Table created. JKEaccounts
+Account Created: 200
+Account Created: 201
+Account Created: 202
+Account Created: 203
+Account Created: 204
+Account Created: 300
+Account Created: 301
+Account Created: 302
+Account Created: 303
+Account Created: 304
+Table created. JKEtransactions
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Table created. JKEcontributions
+Table created. JKEKeys
+Table created. JKEuser
+User created: Julie Brown
+User created: Rita Betts
+Table created. JKEaccounts
+Account Created: 200
+Account Created: 201
+Account Created: 202
+Account Created: 203
+Account Created: 204
+Account Created: 300
+Account Created: 301
+Account Created: 302
+Account Created: 303
+Account Created: 304
+Table created. JKEtransactions
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Table created. JKEcontributions
+Table created. JKEKeys
+Table created. JKEuser
+User created: Julie Brown
+User created: Rita Betts
+Table created. JKEaccounts
+Account Created: 200
+Account Created: 201
+Account Created: 202
+Account Created: 203
+Account Created: 204
+Account Created: 300
+Account Created: 301
+Account Created: 302
+Account Created: 303
+Account Created: 304
+Table created. JKEtransactions
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Table created. JKEcontributions
+Table created. JKEKeys
+Table created. JKEuser
+User created: Julie Brown
+User created: Rita Betts
+Table created. JKEaccounts
+Account Created: 200
+Account Created: 201
+Account Created: 202
+Account Created: 203
+Account Created: 204
+Account Created: 300
+Account Created: 301
+Account Created: 302
+Account Created: 303
+Account Created: 304
+Table created. JKEtransactions
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Table created. JKEcontributions
+User created: Markus Foo
+Table created. JKEKeys
+Table created. JKEuser
+User created: Julie Brown
+User created: Rita Betts
+Table created. JKEaccounts
+Account Created: 200
+Account Created: 201
+Account Created: 202
+Account Created: 203
+Account Created: 204
+Account Created: 300
+Account Created: 301
+Account Created: 302
+Account Created: 303
+Account Created: 304
+Table created. JKEtransactions
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Table created. JKEcontributions
+Transaction created: 7
+Table created. JKEKeys
+Table created. JKEuser
+User created: Julie Brown
+User created: Rita Betts
+Table created. JKEaccounts
+Account Created: 200
+Account Created: 201
+Account Created: 202
+Account Created: 203
+Account Created: 204
+Account Created: 300
+Account Created: 301
+Account Created: 302
+Account Created: 303
+Account Created: 304
+Table created. JKEtransactions
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Table created. JKEcontributions
+Table created. JKEKeys
+Table created. JKEuser
+User created: Julie Brown
+User created: Rita Betts
+Table created. JKEaccounts
+Account Created: 200
+Account Created: 201
+Account Created: 202
+Account Created: 203
+Account Created: 204
+Account Created: 300
+Account Created: 301
+Account Created: 302
+Account Created: 303
+Account Created: 304
+Table created. JKEtransactions
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Table created. JKEcontributions
+Account Created: 6
+Table created. JKEKeys
+Table created. JKEuser
+User created: Julie Brown
+User created: Rita Betts
+Table created. JKEaccounts
+Account Created: 200
+Account Created: 201
+Account Created: 202
+Account Created: 203
+Account Created: 204
+Account Created: 300
+Account Created: 301
+Account Created: 302
+Account Created: 303
+Account Created: 304
+Table created. JKEtransactions
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Table created. JKEcontributions
+Table created. JKEKeys
+Table created. JKEuser
+User created: Julie Brown
+User created: Rita Betts
+Table created. JKEaccounts
+Account Created: 200
+Account Created: 201
+Account Created: 202
+Account Created: 203
+Account Created: 204
+Account Created: 300
+Account Created: 301
+Account Created: 302
+Account Created: 303
+Account Created: 304
+Table created. JKEtransactions
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Table created. JKEcontributions
+Table created. JKEKeys
+Table created. JKEuser
+User created: Julie Brown
+User created: Rita Betts
+Table created. JKEaccounts
+Account Created: 200
+Account Created: 201
+Account Created: 202
+Account Created: 203
+Account Created: 204
+Account Created: 300
+Account Created: 301
+Account Created: 302
+Account Created: 303
+Account Created: 304
+Table created. JKEtransactions
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Transaction created: 200
+Table created. JKEcontributions
+Transaction created: 200
+------------- ---------------- ---------------
+
+Testcase: testAddSubclassInstancesBad took 0.004 sec
+Testcase: testAccountLogic took 6.355 sec
+Testcase: testAccountTypesArray took 2.694 sec
+Testcase: testGetAccountNumber took 2.523 sec
+Testcase: testGetUserAccountTypes took 2.775 sec
+Testcase: testDetermineAcct took 2.511 sec
+Testcase: testGetAccount took 2.281 sec
+Testcase: testGetUserAccounts took 2.449 sec
+Testcase: testTransactionAmount took 0 sec
+Testcase: testTransactionDate took 0 sec
+Testcase: testContributionAccountNumber took 0.001 sec
+Testcase: testContributionOrganization took 0 sec
+Testcase: testContributionPercentage took 0 sec
+Testcase: testContributionDate took 0.001 sec
+Testcase: testAccountBalance took 0 sec
+Testcase: testAccountDividends took 0 sec
+Testcase: testAccountDividendsETD took 0 sec
+Testcase: testAccountContributions took 0 sec
+Testcase: testAccountContributionsETD took 0 sec
+Testcase: testAccountAccountNumber took 0 sec
+Testcase: testAccountUsername took 0.001 sec
+Testcase: testAccountType took 0 sec
+Testcase: testAccountBeanSerializer took 0.005 sec
+Testcase: testTransactionBeanSerializer took 0 sec
+Testcase: testUserBeanSerializer took 0.004 sec
+Testcase: testUserBeanUserName took 0 sec
+Testcase: testUserBeanFirstName took 0 sec
+Testcase: testUserBeanLastName took 0 sec
+Testcase: testTransactionBeanID took 0 sec
+Testcase: testTransactionBeanType took 0 sec
+Testcase: testTransactionBeanAccountNumber took 0.001 sec
+Testcase: testTransactionSource took 0 sec
+Testcase: testCreateLoadUsers took 2.34 sec
+Testcase: testCreateLoadTransactionBeans took 3.029 sec
+Testcase: testLogin took 2.181 sec
+Testcase: testCreateLoadAccountBean took 4.295 sec
+Testcase: testAsMap took 0.004 sec
+Testcase: testIsValidOrganization took 0.001 sec
+Testcase: testNamesAsArray took 0.001 sec
+Testcase: testGetTransactionHistory took 3.236 sec
+Testcase: testGetProposedContributionTransaction took 2.395 sec
+Testcase: testPerformContribution took 2.692 sec
+Testcase: testOrganization took 0 sec
+Testcase: testOrganization took 0.001 sec
+Testcase: testOrganization took 0 sec
+Testcase: testOrganization took 0 sec

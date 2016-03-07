@@ -1,0 +1,306 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<meta name="viewport" 
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<script type="text/javascript"
+		data-dojo-config="isDebug: false, async: true, parseOnLoad: true, mblHideAddressBar: false"
+		src="dojo/dojo.js">
+	</script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+	<link rel="stylesheet" href="css/JKEMobile.css" />
+</head>
+
+<body id="content" style="display: none;">
+	<script src="js/initOptions.js"></script>
+	<script src="js/JKEMobile.js"></script>
+	<script src="js/messages.js"></script>
+	
+	<div id="loginView" data-dojo-type="dojox.mobile.View" >
+		<h1 data-dojo-type="dojox.mobile.Heading" style="height: 50px; background-image: url(images/jke_banner.png)"></h1>
+		<h1 style="font-size: 14pt; text-align: center">Log In</h1>
+		<form name="loginForm" id="loginForm" style="margin: 5px; padding: 10px">
+			<div class="fieldset">
+				<div class="fieldrow">
+					<span style="font-weight: bold; font-size: 12pt">Username:</span>
+				</div>
+				<div class="fieldrow">
+					<input class="input" id="uname" name="username"></input>
+				</div>
+				<div class="fieldrow">
+					<span style="font-weight: bold; font-size: 12pt">Password:</span>
+				</div>
+				<div class="fieldrow">
+					<input class="input" id="pword" type="password" name="password"></input>
+				</div>
+			</div>
+		</form>
+		<div align="right" style="margin-right: 20px">
+			<button id="loginButton" data-dojo-type="dojox.mobile.Button" style="font-size: 12pt">Log In</button>
+		</div>
+		<br> <img id="loanImg" src="images/jke_auto_loans.png" width="100%" />
+		<div id="loginFailed" style="display: none;">
+			<h1 style="color: white; background-color: gray; border-color: transparent; margin: 0px; font-size: 9pt; border-width: 0px; text-align: center">
+				<br>Login Failed<br>
+				<br>
+			</h1>
+			<div style="background-color: gray" align="center">
+				<button id="loginFailedButton" class=mblRedButton data-dojo-type="dojox.mobile.Button" style="width: 150px; font-size: 12pt">Try Again</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- main view -->
+	<div data-dojo-type="dojox.mobile.View" id="mainView">
+		<h1 data-dojo-type="dojox.mobile.Heading" style="height: 50px; background-image: url(images/jke_banner.png)">
+			<div data-dojo-type="dojox.mobile.ToolBarButton" data-dojo-props="moveTo:'loginView',transitionDir:-1" style="right: 5px; top: 5px; float: right">Log Out</div>
+		</h1>
+		<h1 id="banner" style="border-color: transparent; text-indent: 8pt; font-size: 12pt"></h1>
+		<ul data-dojo-type="dojox.mobile.RoundRectList">
+			<li data-dojo-type="dojox.mobile.ListItem" data-dojo-props="label:'Money that Matters',moveTo:'mtmView',icon:'images/donate.png'"></li>
+			<li data-dojo-type="dojox.mobile.ListItem" data-dojo-props="label:'Services',moveTo:'servicesView',icon:'images/bank.png'"></li>
+			<li data-dojo-type="dojox.mobile.ListItem" data-dojo-props="label:'Financial Services',moveTo:'financialServicesView',icon:'images/mortgage.png'"></li>
+		</ul>
+		<h1 style="border-color: transparent; text-indent: 8pt; font-size: 10pt">Click an Account Below for Recent Transactions</h1>
+		<ul id="mainAccountList" data-dojo-type="dojox.mobile.RoundRectList">
+		</ul>
+	</div>
+
+	<!-- transaction history view -->
+	<div data-dojo-type="dojox.mobile.ScrollableView" id="transactionHistoryView">
+		<h1 data-dojo-type="dojox.mobile.Heading" style="height: 50px; background-image: url(images/jke_banner.png)">
+			<div data-dojo-type="dojox.mobile.ToolBarButton" data-dojo-props="moveTo:'mainView',transitionDir:-1" style="right: 5px; top: 5px; float: right">Back</div>
+		</h1>
+		<h1 style="border-color: transparent; text-indent: 8pt; font-size: 12pt">Transaction History</h1>
+		<ul id="transactions" data-dojo-type="dojox.mobile.RoundRectList">
+		</ul>
+	</div>
+
+	<!--  money that matters view -->
+	<div data-dojo-type="dojox.mobile.View" id="mtmView">
+		<h1 data-dojo-type="dojox.mobile.Heading" style="height: 50px; background-image: url(images/jke_banner.png)">
+			<div data-dojo-type="dojox.mobile.ToolBarButton" data-dojo-props="moveTo:'mainView',transitionDir:-1" style="right: 5px; top: 5px; float: right">Back</div>
+		</h1>
+		<h1 style="border-color: transparent; text-indent: 8pt; font-size: 12pt">Dividend Contribution</h1>
+		<ul data-dojo-type="dojox.mobile.RoundRectList">
+			<li id="chooseAcct" data-dojo-type="dojox.mobile.ListItem" data-dojo-props="moveTo:'#'">
+				<div style="line-height: 1.5em; font-size: 12pt">Choose an account to pay from</div>
+				<div style="line-height: 1.5em; font-size: 10pt">please select...</div>
+			</li>
+			<li id="selectedAcct" data-dojo-type="dojox.mobile.ListItem"></li>
+		</ul>
+		<ul data-dojo-type="dojox.mobile.RoundRectList">
+			<li id="chooseOrg" data-dojo-type="dojox.mobile.ListItem" data-dojo-props="moveTo:'#'">
+				<div style="line-height: 1.5em; font-size: 12pt">Choose an organization</div>
+				<div style="line-height: 1.5em; font-size: 10pt">please select...</div>
+			</li>
+			<li id="selectedOrg" data-dojo-type="dojox.mobile.ListItem"></li>
+		</ul>
+		<div data-dojo-type="dojox.mobile.RoundRect" style="height: 60px">
+			<div style="line-height: 1.5em; font-size: 12pt; font-weight: bold">Percentage of dividends</div>
+			<table>
+				<tr>
+					<td><input id="percentage" class="input" style="width: 40px; text-align: center" value="0" /></td>
+					<td>%</td>
+					<td><input id="slider" type="range" style="width: 200px;" data-dojo-type="dojox.mobile.Slider"
+						data-dojo-props=' min:"0",
+						     				   step:"5",
+						     				   value:"0", 
+						                       max:"100",
+						                       onChange:function(newvalue){dojo.byId("percentage").value = newvalue;}' /></td>
+				</tr>
+			</table>
+		</div>
+		<div id="missingInfo" style="display: none">
+			<h1 style="color: white; background-color: gray; border-color: transparent; margin: 0px; font-size: 10pt; border-width: 0px; text-align: center">
+				<br>Please enter missing data<br>
+				<br>
+			</h1>
+			<div style="background-color: gray" align="center">
+				<button id="OKButton" data-dojo-type="dojox.mobile.Button" style="width: 150px; font-size: 12pt">OK</button>
+			</div>
+		</div>
+		<div align="right" style="margin-right: 10px">
+			<button id="proceedButton" data-dojo-type="dojox.mobile.Button" style="font-size: 12pt">Proceed</button>
+		</div>
+	</div>
+
+	<!-- Money that Matters account list showing account types and account numbers -->
+	<div data-dojo-type="dojox.mobile.View" id="accountListView">
+		<h1 data-dojo-type="dojox.mobile.Heading" style="height: 50px; background-image: url(images/jke_banner.png)">
+			<div data-dojo-type="dojox.mobile.ToolBarButton" data-dojo-props="moveTo:'mtmView',transitionDir:-1" style="right: 5px; top: 5px; float: right">Back</div>
+		</h1>
+		<h1 style="border-color: transparent; text-indent: 10pt; font-size: 12pt">Select Account</h1>
+		<ul id="accountList" data-dojo-type="dojox.mobile.RoundRectList" data-dojo-props="select:'single'">
+		</ul>
+	</div>
+
+	<!-- Money that Matters organizations -->
+	<div data-dojo-type="dojox.mobile.View" id="orgListView">
+		<h1 data-dojo-type="dojox.mobile.Heading" style="height: 50px; background-image: url(images/jke_banner.png)">
+			<div data-dojo-type="dojox.mobile.ToolBarButton" data-dojo-props="moveTo:'mtmView',transitionDir:-1" style="right: 5px; top: 5px; float: right">Back</div>
+		</h1>
+		<h1 style="color: black; border-color: transparent; text-indent: 10pt; font-size: 12pt">Select Organization</h1>
+		<ul id="orgList" data-dojo-type="dojox.mobile.RoundRectList" data-dojo-props="select:'single'">
+		</ul>
+		<ul data-dojo-type="dojox.mobile.RoundRectList">
+			<li id="charities" data-dojo-type="dojox.mobile.ListItem" data-dojo-props="label: 'Find Local Participating Charity', moveTo:'#'"></li>
+		</ul>
+	</div>
+
+	<!-- map view -->
+	<div data-dojo-type="dojox.mobile.View" id="mapView">
+		<h1 id="mapheader" data-dojo-type="dojox.mobile.Heading" style="height: 50px; background-image: url(images/jke_banner.png)">
+			<div data-dojo-type="dojox.mobile.ToolBarButton" data-dojo-props="moveTo:'mtmView',transitionDir:-1" style="right: 5px; top: 5px; float: right">Back</div>
+		</h1>
+		<div id="mapCanvas" style="right: 0px; left: 0px; top: 0px; height: 397px">=== MAP GOES HERE ===</div>
+	</div>
+
+
+	<!-- other local charities view -->
+	<div data-dojo-type="dojox.mobile.View" id="noCharityView">
+		<h1 data-dojo-type="dojox.mobile.Heading" style="height: 50px; background-image: url(images/jke_banner.png)">
+			<div data-dojo-type="dojox.mobile.ToolBarButton" data-dojo-props="moveTo:'mtmView',transitionDir:-1" style="right: 5px; top: 5px; float: right">Back</div>
+		</h1>
+		<div data-dojo-type="dojox.mobile.RoundRectList">
+			<div data-dojo-type="dojox.mobile.ListItem" data-dojo-props="label:'Sorry, no local charities found'" style="text-align: center"></div>
+		</div>
+	</div>
+
+	<!-- Proceed with dividend contribution -->
+	<div data-dojo-type="dojox.mobile.View" id="proceedView">
+		<h1 data-dojo-type="dojox.mobile.Heading" style="height: 50px; background-image: url(images/jke_banner.png)">
+			<div data-dojo-type="dojox.mobile.ToolBarButton" data-dojo-props="moveTo:'mtmView',transitionDir:-1" style="right: 5px; top: 5px; float: right">Back</div>
+		</h1>
+		<div id="proceedMsg" data-dojo-type="dojox.mobile.RoundRect">Dividend Contribution Confirmed</div>
+		<div id="proceedViewButtons" style="background-color: gray" align="center">
+			<button id="confirmButton" data-dojo-type="dojox.mobile.Button" style="width: 150px; font-size: 12pt">Confirm</button>
+			<button id="cancelButton" class=mblRedButton data-dojo-type="dojox.mobile.Button" style="width: 150px; font-size: 12pt">Cancel</button>
+		</div>
+	</div>
+
+
+	<!-- confirm dividend contribution -->
+	<div data-dojo-type="dojox.mobile.View" id="confirmView">
+		<h1 data-dojo-type="dojox.mobile.Heading" style="height: 50px; background-image: url(images/jke_banner.png)">
+			<div data-dojo-type="dojox.mobile.ToolBarButton" data-dojo-props="moveTo:'mainView',transitionDir:-1" style="right: 5px; top: 5px; float: right">Main</div>
+		</h1>
+		<div id="confirmed" data-dojo-type="dojox.mobile.RoundRect"></div>
+	</div>
+
+	<!--  services view -->
+	<div data-dojo-type="dojox.mobile.View" id="servicesView">
+		<h1 data-dojo-type="dojox.mobile.Heading" style="height: 50px; background-image: url(images/jke_banner.png)">
+			<div data-dojo-type="dojox.mobile.ToolBarButton" data-dojo-props="moveTo:'mainView',transitionDir:-1" style="right: 5px; top: 5px; float: right">Back</div>
+		</h1>
+		<h1 style="border-color: transparent; text-indent: 8pt; font-size: 12pt">Services</h1>
+		<ul data-dojo-type="dojox.mobile.RoundRectList">
+			<li data-dojo-type="dojox.mobile.ListItem" data-dojo-props="label:'Certificates of Deposit'"></li>
+			<li data-dojo-type="dojox.mobile.ListItem" data-dojo-props="label:'Open New Account'"></li>
+			<li data-dojo-type="dojox.mobile.ListItem" data-dojo-props="label:'Close Account'"></li>
+			<li data-dojo-type="dojox.mobile.ListItem" data-dojo-props="label:'Policy Change Request'"></li>
+			<li data-dojo-type="dojox.mobile.ListItem" data-dojo-props="label:'Policy Change Status'"></li>
+		</ul>
+	</div>
+
+	<!--  financial services view -->
+	<div data-dojo-type="dojox.mobile.View" id="financialServicesView">
+		<h1 data-dojo-type="dojox.mobile.Heading" style="height: 50px; background-image: url(images/jke_banner.png)">
+			<div data-dojo-type="dojox.mobile.ToolBarButton" data-dojo-props="moveTo:'mainView',transitionDir:-1" style="right: 5px; top: 5px; float: right">Back</div>
+		</h1>
+		<h1 style="border-color: transparent; text-indent: 8pt; font-size: 12pt">Financial Services</h1>
+		<ul data-dojo-type="dojox.mobile.RoundRectList">
+			<li data-dojo-type="dojox.mobile.ListItem" data-dojo-props="label:'Auto Loans'"></li>
+			<li data-dojo-type="dojox.mobile.ListItem" data-dojo-props="label:'Vacation Home Finance'"></li>
+			<li data-dojo-type="dojox.mobile.ListItem" data-dojo-props="label:'Today\'s Rates'"></li>
+			<li data-dojo-type="dojox.mobile.ListItem" data-dojo-props="label:'Find a Lender',moveTo:'findALenderView'"></li>
+			<li data-dojo-type="dojox.mobile.ListItem" data-dojo-props="label:'Mortgage Calculator',moveTo:'mortgageCalcView'"></li>
+			<li data-dojo-type="dojox.mobile.ListItem" data-dojo-props="label:'Home Equity Lines'"></li>
+		</ul>
+	</div>
+	
+	<div data-dojo-type="dojox.mobile.View" id="mortgageCalcView">
+		<h1 data-dojo-type="dojox.mobile.Heading" style="height: 50px; background-image: url(images/jke_banner.png)">
+			<div data-dojo-type="dojox.mobile.ToolBarButton" data-dojo-props="moveTo:'financialServicesView',transitionDir:-1" style="right: 5px; top: 5px; float: right">Back</div>
+		</h1>
+		<h1 style="border-color: transparent; text-indent: 8pt; font-size: 12pt">Mortgage Calculator</h1>
+		<form name="calculatorForm" id="calculatorForm" style="margin: 5px; padding: 10px">
+			<div class="fieldset">
+				<div class="fieldrow">
+					<span style="font-weight: bold; font-size: 12pt">Amount Financed (US$):</span>
+				</div>
+				<div class="fieldrow">
+					<input class="input" id="calcAmount" name="calcamount"></input>
+				</div>
+				<div class="fieldrow">
+					<span style="font-weight: bold; font-size: 12pt">Duration (years):</span>
+				</div>
+				<div class="fieldrow">
+					<input class="input" id="calcYears" name="calcyears"></input>
+				</div>
+				<div class="fieldrow">
+					<span style="font-weight: bold; font-size: 12pt">Interest Rate (%):</span>
+				</div>
+				<div class="fieldrow">
+					<input class="input" id="calcRate" name="calcrate"></input>
+				</div>
+			</div>
+		</form>
+		<div align="right" style="margin-right: 20px">
+			<button id="calculate" data-dojo-type="dojox.mobile.Button" style="font-size: 12pt">Calculate</button>
+		</div>
+	</div>
+	
+	<div data-dojo-type="dojox.mobile.View" id="displayPaymentView">
+		<h1 data-dojo-type="dojox.mobile.Heading" style="height: 50px; background-image: url(images/jke_banner.png)">
+			<div data-dojo-type="dojox.mobile.ToolBarButton" data-dojo-props="moveTo:'mortgageCalcView',transitionDir:-1" style="right: 5px; top: 5px; float: right">Back</div>
+		</h1>
+		<h1 style="border-color: transparent; text-indent: 8pt; font-size: 12pt">Monthly Payment</h1>
+		<ul id="payment" data-dojo-type="dojox.mobile.RoundRectList">
+		</ul>
+	</div>
+	
+	<div data-dojo-type="dojox.mobile.View" id="findALenderView">
+		<h1 data-dojo-type="dojox.mobile.Heading" style="height: 50px; background-image: url(images/jke_banner.png)">
+			<div data-dojo-type="dojox.mobile.ToolBarButton" data-dojo-props="moveTo:'financialServicesView',transitionDir:-1" style="right: 5px; top: 5px; float: right">Back</div>
+		</h1>
+		<h1 style="border-color: transparent; text-indent: 8pt; font-size: 12pt">Find a Lender</h1>
+		<form name="mortgageform" id="mortgageform" style="margin: 5px; padding: 10px">
+			<div class="fieldset">
+				<div class="fieldrow">
+					<span style="font-weight: bold; font-size: 12pt">Amount Financed (US$):</span>
+				</div>
+				<div class="fieldrow">
+					<input class="input" id="amount" name="amount"></input>
+				</div>
+				<div class="fieldrow">
+					<span style="font-weight: bold; font-size: 12pt">Duration (years):</span>
+				</div>
+				<div class="fieldrow">
+					<input class="input" id="years" name="years"></input>
+				</div>
+				<div class="fieldrow">
+					<span style="font-weight: bold; font-size: 12pt">Interest Rate (%):</span>
+				</div>
+				<div class="fieldrow">
+					<input class="input" id="rate" name="rate"></input>
+				</div>
+			</div>
+		</form>
+		<div align="right" style="margin-right: 20px">
+			<button id="getLenders" data-dojo-type="dojox.mobile.Button" style="font-size: 12pt">Find a Lender</button>
+		</div>
+	</div>
+	
+	<div data-dojo-type="dojox.mobile.View" id="displayLendersView">
+		<h1 data-dojo-type="dojox.mobile.Heading" style="height: 50px; background-image: url(images/jke_banner.png)">
+			<div data-dojo-type="dojox.mobile.ToolBarButton" data-dojo-props="moveTo:'findALenderView',transitionDir:-1" style="right: 5px; top: 5px; float: right">Back</div>
+		</h1>
+		<h1 style="border-color: transparent; text-indent: 8pt; font-size: 12pt">Lenders</h1>
+		<ul id="lenderList" data-dojo-type="dojox.mobile.RoundRectList">
+		</ul>
+	</div>
+</body>
+</html>
