@@ -17,7 +17,7 @@ This  example is used to build the JKE sample application.
   </description>
   <!-- set global properties for this build -->
   <!--<property name="src" location="C:\BWS"/>-->
-  <property name="src" location="/var/lib/jenkins/jobs/JKEBuild/workspace/"/>
+  <property name="src" location="/var/lib/jenkins/sharedspace/SHAREDWORKSPACE/"/>
     <property name="build" location="build"/>
   <property name="dist" location="dist"/>
   <property name="report.dir" location="junit_report"/>
